@@ -1,17 +1,10 @@
-//
-//  AeroMenuApp.swift
-//  AeroMenu
-//
-//  Created by bake on 04.04.25.
-//
-
 import SwiftUI
 
 @main
 struct AeroMenuApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        Settings {}
     }
 }
