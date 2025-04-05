@@ -4,6 +4,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var menuBarController: MenuBarController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        menuBarController = MenuBarController()
+        do {
+            menuBarController = try MenuBarController()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

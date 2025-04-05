@@ -4,28 +4,22 @@ class Workspaces: ObservableObject {
     private let aerospace: AeroSpace
     private let socket: Socket
 
+    private let symbols: [String: String]
+
     @Published
     public var workspaces: [Workspace] = []
 
-    init(aerospace: AeroSpace, socket: Socket) {
+    init(aerospace: AeroSpace, socket: Socket, symbols: [String: String]) {
         self.aerospace = aerospace
         self.socket = socket
+        self.symbols = symbols
     }
 
     public func listen() throws {
         try socket.setup()
 
-        let symbols: [String: String] = [
-            "1": "apple.terminal",
-            "2": "text.page",
-            "3": "safari",
-            "4": "play",
-            "5": "ellipsis.bubble",
-            "6": "gamecontroller",
-        ]
-
         var workspaces = try aerospace.listAllWorkspaces()
-            .map { Workspace(id: $0, symbol: symbols[$0] ?? "ellipsis") }
+            .map { Workspace(id: $0, symbol: symbols[$0] ?? "circle") }
 
         for w in try aerospace.listFocusedWorkspaces() {
             if let i = workspaces.firstIndex(where: { $0.id == w }) {

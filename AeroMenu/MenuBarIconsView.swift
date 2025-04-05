@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct MenuBarIconsView: View {
-    private let showWorkspaceNames: Bool = false
-    private let showUnfocusedWorkspaces: Bool = true
-
     @ObservedObject var workspaces: Workspaces
+    var showWorkspaceNames: Bool
+    var showUnfocusedWorkspaces: Bool
 
     @State public var size: CGSize = .zero
 

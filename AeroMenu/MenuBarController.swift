@@ -6,14 +6,21 @@ class MenuBarController {
     private var hostingView: NSHostingView<MenuBarIconsView>
     private var error: Error?
 
-    init() {
+    init() throws {
+        let config = try ConfigParser().parse()
+
         workspaces = Workspaces(
-            aerospace: AeroSpace(path: "/run/current-system/sw/bin/aerospace"),
-            socket: Socket(path: "/tmp/aeromenu.socket")
+            aerospace: AeroSpace(path: config.aeroSpacePath),
+            socket: Socket(path: config.socketPath),
+            symbols: config.workspaces
         )
 
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        hostingView = NSHostingView(rootView: MenuBarIconsView(workspaces: workspaces))
+        hostingView = NSHostingView(rootView: MenuBarIconsView(
+            workspaces: workspaces,
+            showWorkspaceNames: config.showWorkspaceNames,
+            showUnfocusedWorkspaces: config.showUnfocusedWorkspaces
+        ))
 
         setupButton()
         setupMenu()
@@ -24,15 +31,16 @@ class MenuBarController {
             }
         }
 
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                try self.workspaces.listen()
-            } catch {
-                // TODO: Change icon
-                print(error.localizedDescription)
-                self.error = error
-                self.setupMenu()
-            }
+        DispatchQueue.global(qos: .userInitiated).async(execute: listen)
+    }
+
+    private func listen() {
+        do {
+            try workspaces.listen()
+        } catch {
+            print(error.localizedDescription)
+            self.error = error
+            setupMenu()
         }
     }
 

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2B3551102DA16CB900E232FC /* TOMLKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2B35510F2DA16CB900E232FC /* TOMLKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		2BDB41812DA058C700AA10FE /* AeroMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AeroMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B3551102DA16CB900E232FC /* TOMLKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = AeroMenu;
 			packageProductDependencies = (
+				2B35510F2DA16CB900E232FC /* TOMLKit */,
 			);
 			productName = AeroMenu;
 			productReference = 2BDB41812DA058C700AA10FE /* AeroMenu.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 2BDB41782DA058C700AA10FE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2B35510E2DA16CB900E232FC /* XCRemoteSwiftPackageReference "TOMLKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2BDB41822DA058C700AA10FE /* Products */;
 			projectDirPath = "";
@@ -323,6 +332,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2B35510E2DA16CB900E232FC /* XCRemoteSwiftPackageReference "TOMLKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LebJe/TOMLKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2B35510F2DA16CB900E232FC /* TOMLKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B35510E2DA16CB900E232FC /* XCRemoteSwiftPackageReference "TOMLKit" */;
+			productName = TOMLKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2BDB41792DA058C700AA10FE /* Project object */;
 }
