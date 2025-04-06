@@ -33,6 +33,18 @@ showUnfocusedWorkspaces = true
 6 = "gamecontroller"
 ```
 
+## Usage
+
+To notify AeroMenu when the workspace changes, simply write the new workspace name to the configured socket. To do this, add the following to your AeroSpace config:
+
+```toml
+exec-on-workspace-change = [
+  "/bin/bash"
+  "-c"
+  "echo \"workspace-change $AEROSPACE_FOCUSED_WORKSPACE\" | nc -U /tmp/aeromenu.socket"
+]
+```
+
 ## SF Symbols
 
 You can download SF Symbols from [developer.apple.com](https://developer.apple.com/sf-symbols/).
