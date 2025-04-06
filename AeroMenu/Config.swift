@@ -3,7 +3,7 @@ import TOMLKit
 
 struct Config: Codable {
     var aeroSpacePath: String = "/opt/homebrew/bin/aerospace"
-    var socketPath: String = "/tmp/test.sock"
+    var socketPath: String = "/tmp/aeromenu.sock"
     var showWorkspaceNames: Bool = false
     var showUnfocusedWorkspaces: Bool = true
     var workspaces: [String: String] = [:]
