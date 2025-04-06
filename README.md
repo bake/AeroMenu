@@ -39,8 +39,8 @@ To notify AeroMenu when the workspace changes, simply write the new workspace na
 
 ```toml
 exec-on-workspace-change = [
-  "/bin/bash"
-  "-c"
+  "/bin/bash",
+  "-c",
   "echo \"workspace-change $AEROSPACE_FOCUSED_WORKSPACE\" | nc -U /tmp/aeromenu.socket"
 ]
 ```
